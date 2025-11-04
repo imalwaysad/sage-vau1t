@@ -6,6 +6,12 @@
     <title>Sage's Vault V1</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Boblox';
+            src: url('https://see.fontimg.com/api/rf5/nRjl4/N2Q5MDY5M2NlNTU4NDE0N2I5NDY5ODFjNzc5ZjUzZTgudHRm/U2FnZXMgVmF1bHQgdjE/boblox-classic.png?r=fs&h=65&w=1000&fg=000000&bg=FFFFFF&tb=1&s=65');
+        }
+    </style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -45,6 +51,48 @@
             z-index: 100;
             letter-spacing: 4px;
             font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .announcement {
+            position: fixed;
+            top: 90px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .announcement-text {
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        .close-announcement {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .close-announcement:hover {
+            color: #f00;
+            text-shadow: 0 0 10px #f00;
         }
 
         .cloak-btn {
@@ -72,7 +120,7 @@
         }
 
         .container {
-            margin-top: 120px;
+            margin-top: 180px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 20px;
@@ -283,6 +331,12 @@
     
     <div class="content">
         <div class="title">Sage's Vault V1</div>
+        
+        <div class="announcement" id="announcement">
+            <button class="close-announcement" onclick="closeAnnouncement()">×</button>
+            <p class="announcement-text">🎮 Welcome to Sage's Vault! 49 games available. New games added regularly! 🎮</p>
+        </div>
+        
         <button class="cloak-btn" onclick="openCloakMenu()">Cloak</button>
 
         <div class="container" id="gameContainer"></div>
@@ -404,24 +458,24 @@
             { id: 29, name: 'Sandtris', icon: '🎮', url: 'Sandtris.html' },
             { id: 30, name: 'Steal Brainrot Online', icon: '🎮', url: 'Steal Brainrot Online.html' },
             { id: 31, name: 'Sandstone', icon: '🎮', url: 'sandstone.html' },
-            { id: 32, name: 'Game 32', icon: '🎮', url: 'game32.html' },
-            { id: 33, name: 'Game 33', icon: '🎮', url: 'game33.html' },
-            { id: 34, name: 'Game 34', icon: '🎮', url: 'game34.html' },
-            { id: 35, name: 'Game 35', icon: '🎮', url: 'game35.html' },
-            { id: 36, name: 'Game 36', icon: '🎮', url: 'game36.html' },
-            { id: 37, name: 'Game 37', icon: '🎮', url: 'game37.html' },
-            { id: 38, name: 'Game 38', icon: '🎮', url: 'game38.html' },
-            { id: 39, name: 'Game 39', icon: '🎮', url: 'game39.html' },
-            { id: 40, name: 'Game 40', icon: '🎮', url: 'game40.html' },
-            { id: 41, name: 'Game 41', icon: '🎮', url: 'game41.html' },
-            { id: 42, name: 'Game 42', icon: '🎮', url: 'game42.html' },
-            { id: 43, name: 'Game 43', icon: '🎮', url: 'game43.html' },
-            { id: 44, name: 'Game 44', icon: '🎮', url: 'game44.html' },
-            { id: 45, name: 'Game 45', icon: '🎮', url: 'game45.html' },
-            { id: 46, name: 'Game 46', icon: '🎮', url: 'game46.html' },
-            { id: 47, name: 'Game 47', icon: '🎮', url: 'game47.html' },
-            { id: 48, name: 'Game 48', icon: '🎮', url: 'game48.html' },
-            { id: 49, name: 'Game 49', icon: '🎮', url: 'game49.html' },
+            { id: 32, name: 'Attack Hole', icon: '🎮', url: 'Attack Hole.html' },
+            { id: 33, name: 'Bacon May Die', icon: '🎮', url: 'Bacon May Die.html' },
+            { id: 34, name: 'Bank Robbery 2', icon: '🎮', url: 'Bank Robbery 2.html' },
+            { id: 35, name: 'Basket Random', icon: '🎮', url: 'Basket Random.html' },
+            { id: 36, name: 'Binding of Isaac', icon: '🎮', url: 'Binding of Issac_ Wrath of the Lamb.html' },
+            { id: 37, name: 'Crossy Road', icon: '🎮', url: 'Crossy Road.html' },
+            { id: 38, name: 'DOOM', icon: '🎮', url: 'DOOM.html' },
+            { id: 39, name: 'Half Life', icon: '🎮', url: 'Half Life.html' },
+            { id: 40, name: 'Pixel Gun Survival', icon: '🎮', url: 'Pixel Gun Survival.html' },
+            { id: 41, name: 'Plants vs Zombies', icon: '🎮', url: 'Plants vs Zombies.html' },
+            { id: 42, name: 'Solar Smash', icon: '🎮', url: 'Solar Smash.html' },
+            { id: 43, name: 'Sonic.EXE', icon: '🎮', url: 'Sonic.EXE (ORIGINAL).html' },
+            { id: 44, name: 'Bad Parenting 1', icon: '🎮', url: 'Bad Parenting 1.html' },
+            { id: 45, name: 'Bendy and the Ink Machine', icon: '🎮', url: 'Bendy and the Ink Machine.html' },
+            { id: 46, name: 'Kindergarten', icon: '🎮', url: 'Kindergarten.html' },
+            { id: 47, name: 'OMORI', icon: '🎮', url: 'OMORI.html' },
+            { id: 48, name: 'Sonic Mania', icon: '🎮', url: 'Sonic Mania.html' },
+            { id: 49, name: 'Soundboard', icon: '🎮', url: 'Soundboard.html' },
             { id: 50, name: 'Game 50', icon: '🎮', url: 'game50.html' }
         ];
 
@@ -488,9 +542,11 @@
             alert('Site cloaked as: ' + name);
         }
 
+        function closeAnnouncement() {
+            document.getElementById('announcement').style.display = 'none';
+        }
+
         renderGames();
     </script>
 </body>
 </html>
-</html>
-
