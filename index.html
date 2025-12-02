@@ -200,6 +200,13 @@
             margin-bottom: 15px;
         }
 
+        .modal-footer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
         .modal-btn {
             padding: 10px 20px;
             font-family: 'Orbitron', sans-serif;
@@ -348,6 +355,10 @@
                     <button class="modal-btn close-btn" onclick="closeGame()">X</button>
                 </div>
                 <iframe class="game-frame" id="gameFrame" src=""></iframe>
+                <div class="modal-footer">
+                    <button class="modal-btn fullscreen-btn" onclick="downloadGame()">Download HTML</button>
+                    <button class="modal-btn fullscreen-btn" onclick="openInAboutBlank()">Open in about:blank</button>
+                </div>
             </div>
         </div>
 
@@ -546,9 +557,66 @@
             document.getElementById('announcement').style.display = 'none';
         }
 
+        function downloadGame() {
+            const frame = document.getElementById('gameFrame');
+            const gameUrl = frame.src;
+            
+            if (!gameUrl) {
+                alert('No game loaded');
+                return;
+            }
+            
+            // Create a temporary link and trigger download
+            const a = document.createElement('a');
+            a.href = gameUrl;
+            a.download = gameUrl.split('/').pop() || 'game.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function openInAboutBlank() {
+            const frame = document.getElementById('gameFrame');
+            const gameUrl = frame.src;
+            
+            if (!gameUrl) {
+                alert('No game loaded');
+                return;
+            }
+            
+            // Open the game in about:blank
+            const win = window.open('about:blank', '_blank');
+            if (win) {
+                win.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Game</title>
+                        <style>
+                            body, html {
+                                margin: 0;
+                                padding: 0;
+                                width: 100%;
+                                height: 100%;
+                                overflow: hidden;
+                            }
+                            iframe {
+                                width: 100%;
+                                height: 100%;
+                                border: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <iframe src="${gameUrl}"></iframe>
+                    </body>
+                    </html>
+                `);
+                win.document.close();
+            }
+        }
+
         renderGames();
     </script>
 </body>
 </html>
-
-
